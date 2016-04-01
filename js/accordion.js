@@ -7,6 +7,7 @@ window.onload = function () {
         anchorLinkTriggers  = [],
         subNavShowing       = [],
         styleSheet          = document.styleSheets[0],
+        amountOfCSSRules    = styleSheet.cssRules.length || styleSheet.rules.length,
         topNavItem          = document.querySelectorAll('[data-top-nav-item]'),
         amountOfTopNavItems = topNavItem.length,
         indexOfNavShowing,
@@ -54,7 +55,7 @@ window.onload = function () {
             '[data-top-nav-item]:nth-child(' +
                 (index + 1) + ') > ul.reveal-sub-nav { height: ' +
                 heightOfSubNav[index] + 'px; }',
-            styleSheet.cssRules.length
+            amountOfCSSRules++
         );
 
         anchorLinkTriggers[index].addEventListener(
@@ -65,6 +66,9 @@ window.onload = function () {
     }
 
     styleSheet.insertRule('[data-top-nav-item] > ul { height: 0; }',
-        styleSheet.cssRules.length
-    );
+        amountOfCSSRules // Note: The postfix increment operator from the for
+                         //       loop above has already incremented this value
+                         //       to the next position. Thus, incrementing again
+                         //       is un-necessary.
+        );
 };

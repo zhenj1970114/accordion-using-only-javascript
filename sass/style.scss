@@ -1,0 +1,27 @@
+// Rule 0
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+// Rule 1
+html {
+   margin: 0 auto;
+   width: 80%;
+   font: 1rem / 1.2 'Open Sans', sans-serif;
+}
+
+// Rule 2
+[data-sub-nav-heading] {
+   line-height: 1.4;
+
+   // Rule 3
+   > ul {
+      opacity: 0;
+      transition: all 1s;
+      visibility: hidden;
+
+      // Rule 4
+      &.reveal-sub-nav {
+         opacity: 1;
+         visibility: visible;
+      }
+   }
+}

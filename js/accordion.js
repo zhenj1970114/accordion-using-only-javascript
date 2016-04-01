@@ -7,14 +7,14 @@ window.onload = function () {
         anchorLinkTriggers  = [],
         subNavShowing       = [],
         styleSheet          = document.styleSheets[0],
-        navHeadings         = document.querySelectorAll('[data-sub-nav-heading]'),
-        amountOfNavHeadings = navHeadings.length,
+        topNavItem          = document.querySelectorAll('[data-top-nav-item]'),
+        amountOfTopNavItems = topNavItem.length,
         indexOfNavShowing,
         index;
 
-    for (index = 0; index < amountOfNavHeadings; index++) {
-        anchorLinkTriggers[index] = navHeadings[index].querySelector('a');
-        subNavContainers[index] = navHeadings[index].querySelector('ul');
+    for (index = 0; index < amountOfTopNavItems; index++) {
+        anchorLinkTriggers[index] = topNavItem[index].querySelector('a');
+        subNavContainers[index] = topNavItem[index].querySelector('ul');
         subNavShowing[index] = false;
     }
 
@@ -22,8 +22,8 @@ window.onload = function () {
      *
      */
     function toggleSubNavigation() {
-        for (index = 0; index < amountOfNavHeadings; index++) {
-            if (0 === this.parentNode.compareDocumentPosition(navHeadings[index])) {
+        for (index = 0; index < amountOfTopNavItems; index++) {
+            if (0 === this.parentNode.compareDocumentPosition(topNavItem[index])) {
                 break;
             }
         }
@@ -48,10 +48,10 @@ window.onload = function () {
         }
     }
 
-    for (index = 0; index < amountOfNavHeadings; index++) {
+    for (index = 0; index < amountOfTopNavItems; index++) {
         heightOfSubNav[index] = subNavContainers[index].clientHeight;
         styleSheet.insertRule(
-            '[data-sub-nav-heading]:nth-child(' +
+            '[data-top-nav-item]:nth-child(' +
                 (index + 1) + ') > ul.reveal-sub-nav { height: ' +
                 heightOfSubNav[index] + 'px; }',
             styleSheet.cssRules.length
@@ -64,6 +64,7 @@ window.onload = function () {
         );
     }
 
-    styleSheet.insertRule('[data-sub-nav-heading] > ul { height:' +
-        ' 0; }', styleSheet.cssRules.length);
+    styleSheet.insertRule('[data-top-nav-item] > ul { height: 0; }',
+        styleSheet.cssRules.length
+    );
 };

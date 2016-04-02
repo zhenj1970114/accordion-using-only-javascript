@@ -42,6 +42,12 @@ window.onload = function () {
             }
         }
 
+        //
+        // The sub navigation can exist in one of only three states: all sub navs
+        // hidden; one sub nav showing and the same sub nav is clicked in order to
+        // hide it; and, one sub nav showing while a different sub nav is clicked.
+        // The following if...else structure handles all these cases.
+        //
         if (allSubNavsAreHidden) {
             indexOfNavShowing = index;
             subNavContainers[index].classList.add(

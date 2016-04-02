@@ -19,7 +19,13 @@ window.onload = function () {
     }
 
     /**
+     * TOGGLE SUB NAVIGATION
      *
+     * Reveals/hides a sub navigation, of which there can be more than one. (This
+     * example contains at least five.) Only one sub nav can be shown at any one
+     * time, and all the sub navs can be closed, or hidden.
+     *
+     * @return {void}
      */
     function toggleSubNavigation() {
         for (index = 0; index < amountOfNavHeadings; index++) {

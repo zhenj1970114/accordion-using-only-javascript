@@ -28,6 +28,14 @@ window.onload = function () {
      * @return {void}
      */
     function toggleSubNavigation() {
+
+        //
+        // Compare the position of the element that triggered this function with the
+        // position of the same element in the navHeadings array. The method
+        // compareDocumentPosition returns the number 0 when a match is found, thus
+        // providing us with the index of the element in the array that triggered
+        // this function.
+        //
         for (index = 0; index < amountOfNavHeadings; index++) {
             if (0 === this.parentNode.compareDocumentPosition(navHeadings[index])) {
                 break;

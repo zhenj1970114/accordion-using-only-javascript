@@ -30,11 +30,15 @@ window.onload = function () {
 
         if (allSubNavsAreHidden) {
             indexOfNavShowing = index;
-            subNavContainers[index].classList.add('reveal-sub-nav');
+            subNavContainers[index].classList.add(
+                'reveal-sub-nav'
+            );
             allSubNavsAreHidden = false;
         } else {
             if (index === indexOfNavShowing) {
-                subNavContainers[index].classList.remove('reveal-sub-nav');
+                subNavContainers[index].classList.remove(
+                    'reveal-sub-nav'
+                );
                 allSubNavsAreHidden = true;
             } else {
                 subNavContainers[indexOfNavShowing].classList.remove(

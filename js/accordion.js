@@ -7,14 +7,15 @@ window.onload = function () {
         anchorLinkTriggers  = [],
         subNavShowing       = [],
         styleSheet          = document.styleSheets[0],
-        navHeadings         = document.querySelectorAll('[data-sub-nav-heading]'),
-        amountOfNavHeadings = navHeadings.length,
+        amountOfCSSRules    = styleSheet.cssRules.length || styleSheet.rules.length,
+        topNavItem          = document.querySelectorAll('[data-top-nav-item]'),
+        amountOfTopNavItems = topNavItem.length,
         indexOfNavShowing,
         index;
 
-    for (index = 0; index < amountOfNavHeadings; index++) {
-        anchorLinkTriggers[index] = navHeadings[index].querySelector('a');
-        subNavContainers[index] = navHeadings[index].querySelector('ul');
+    for (index = 0; index < amountOfTopNavItems; index++) {
+        anchorLinkTriggers[index] = topNavItem[index].querySelector('a');
+        subNavContainers[index] = topNavItem[index].querySelector('ul');
         subNavShowing[index] = false;
     }
 
@@ -31,13 +32,13 @@ window.onload = function () {
 
         //
         // Compare the position of the element that triggered this function with the
-        // position of the same element in the navHeadings array. The method
+        // position of the same element in the topNavItem array. The method
         // compareDocumentPosition returns the number 0 when a match is found, thus
         // providing us with the index of the element in the array that triggered
         // this function.
         //
-        for (index = 0; index < amountOfNavHeadings; index++) {
-            if (0 === this.parentNode.compareDocumentPosition(navHeadings[index])) {
+        for (index = 0; index < amountOfTopNavItems; index++) {
+            if (0 === this.parentNode.compareDocumentPosition(topNavItem[index])) {
                 break;
             }
         }
@@ -72,13 +73,13 @@ window.onload = function () {
         }
     }
 
-    for (index = 0; index < amountOfNavHeadings; index++) {
+    for (index = 0; index < amountOfTopNavItems; index++) {
         heightOfSubNav[index] = subNavContainers[index].clientHeight;
         styleSheet.insertRule(
-            '[data-sub-nav-heading]:nth-child(' +
+            '[data-top-nav-item]:nth-child(' +
                 (index + 1) + ') > ul.reveal-sub-nav { height: ' +
                 heightOfSubNav[index] + 'px; }',
-            styleSheet.cssRules.length
+            amountOfCSSRules++
         );
 
         anchorLinkTriggers[index].addEventListener(
@@ -88,6 +89,11 @@ window.onload = function () {
         );
     }
 
-    styleSheet.insertRule('[data-sub-nav-heading] > ul { height:' +
-        ' 0; }', styleSheet.cssRules.length);
+    styleSheet.insertRule('[data-top-nav-item] > ul { height: 0; }',
+        amountOfCSSRules // Note: The postfix increment operator from the for
+                         //       loop above has already incremented this value
+                         //       to the next position. Thus, incrementing again
+                         //       is un-necessary.
+        );
+
 };

@@ -90,7 +90,7 @@ window.onload = function () {
             //
             // The equality of the variable index to the variable
             // indexOfSubNavShowing indicates that the sub nav item that was clicked
-            // is the one that is current being shown.
+            // is the one that is currently being shown.
             //
             if (index === indexOfSubNavShowing) {
 

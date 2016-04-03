@@ -36,7 +36,6 @@ window.onload = function () {
      * @return {void}
      */
     function toggleSubNavigation() {
-
         //
         // Compare the position of the element that triggered this function with the
         // position of the same element in the topNavItem array. The method
@@ -56,11 +55,30 @@ window.onload = function () {
         // hide it; and, one sub nav showing while a different sub nav is clicked.
         // The following if...else structure handles all these cases.
         //
+        // If all the sub navigations are hidden...
+        //
         if (allSubNavsAreHidden) {
+            //
+            // use the index variable that was set in the for loop above to indicate
+            // which item in the topNavItem array was clicked, assigning the value
+            // to the indexOfSubNavShowing variable.
+            //
             indexOfSubNavShowing = index;
+
+            //
+            // Reveal the sub nav, the unordered list (<ul>) item referred to by the
+            // subNavContainers array, by assigning the reveal-sub-nav class to the
+            // <ul> item indexed at subNavContainers[index].
+            //
             subNavContainers[index].classList.add(
                 'reveal-sub-nav'
             );
+
+            //
+            // Because it’s no longer true that all the sub navigations are hidden,
+            // since we just revealed the <ul> item indexed at
+            // subNavContainers[index], we set the allSubNavsAreHidden to false.
+            //
             allSubNavsAreHidden = false;
         } else {
             if (index === indexOfSubNavShowing) {
@@ -102,5 +120,4 @@ window.onload = function () {
                          //       to the next position. Thus, incrementing again
                          //       is un-necessary.
         );
-
 };

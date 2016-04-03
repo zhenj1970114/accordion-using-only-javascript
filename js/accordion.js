@@ -10,7 +10,7 @@ window.onload = function () {
         amountOfCSSRules    = styleSheet.cssRules.length || styleSheet.rules.length,
         topNavItem          = document.querySelectorAll('[data-top-nav-item]'),
         amountOfTopNavItems = topNavItem.length,
-        indexOfNavShowing,
+        indexOfSubNavShowing,
         index;
 
     for (index = 0; index < amountOfTopNavItems; index++) {
@@ -50,25 +50,25 @@ window.onload = function () {
         // The following if...else structure handles all these cases.
         //
         if (allSubNavsAreHidden) {
-            indexOfNavShowing = index;
+            indexOfSubNavShowing = index;
             subNavContainers[index].classList.add(
                 'reveal-sub-nav'
             );
             allSubNavsAreHidden = false;
         } else {
-            if (index === indexOfNavShowing) {
+            if (index === indexOfSubNavShowing) {
                 subNavContainers[index].classList.remove(
                     'reveal-sub-nav'
                 );
                 allSubNavsAreHidden = true;
             } else {
-                subNavContainers[indexOfNavShowing].classList.remove(
+                subNavContainers[indexOfSubNavShowing].classList.remove(
                     'reveal-sub-nav'
                 );
                 subNavContainers[index].classList.add(
                     'reveal-sub-nav'
                 );
-                indexOfNavShowing = index;
+                indexOfSubNavShowing = index;
             }
         }
     }

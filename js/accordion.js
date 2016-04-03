@@ -106,13 +106,30 @@ window.onload = function () {
                 // allSubNavsAreHidden.
                 //
                 allSubNavsAreHidden = true;
+
+            //
+            // Reaching this else clause means that the sub nav showing is not the
+            // the one that was just clicked.
+            //
             } else {
+                //
+                // Hide the current sub nav that is showing...
+                //
                 subNavContainers[indexOfSubNavShowing].classList.remove(
                     'reveal-sub-nav'
                 );
+
+                //
+                // reveal the sub nav at the current index...
+                //
                 subNavContainers[index].classList.add(
                     'reveal-sub-nav'
                 );
+
+                //
+                // and set the variable indexOfSubNavShowing to the index of the
+                // current sub nav showing.
+                //
                 indexOfSubNavShowing = index;
             }
         }

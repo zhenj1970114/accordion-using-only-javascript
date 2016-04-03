@@ -14,15 +14,21 @@ window.onload = function () {
         index;
 
     for (index = 0; index < amountOfTopNavItems; index++) {
+        //
         // Populate the anchorLinkTriggers array with references to the first <a>
         // descendant of each of the <li data-top-nav-item> elements.
+        //
         anchorLinkTriggers[index] = topNavItem[index].querySelector('a');
 
+        //
         // Populate the subNavContainers array with references to the first <ul>
         // descendant of each of the <li data-top-nav-item> elements.
+        //
         subNavContainers[index] = topNavItem[index].querySelector('ul');
 
+        //
         // Populate the subNavShowing Boolean array to false.
+        //
         subNavShowing[index] = false;
     }
 

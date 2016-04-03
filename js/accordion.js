@@ -87,10 +87,24 @@ window.onload = function () {
             //
             allSubNavsAreHidden = false;
         } else {
+            //
+            // The equality of the variable index to the variable
+            // indexOfSubNavShowing indicates that the sub nav item that was clicked
+            // is the one that is current being shown.
+            //
             if (index === indexOfSubNavShowing) {
+
+                //
+                // Thus, hide the current sub nav item...
+                //
                 subNavContainers[index].classList.remove(
                     'reveal-sub-nav'
                 );
+
+                //
+                // and, because all the navs are now hidden, say so in the variable
+                // allSubNavsAreHidden.
+                //
                 allSubNavsAreHidden = true;
             } else {
                 subNavContainers[indexOfSubNavShowing].classList.remove(

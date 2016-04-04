@@ -3,7 +3,6 @@
 window.onload = function () {
     var allSubNavsAreHidden = true,
         subNavContainers    = [],
-        heightOfSubNav      = [],
         anchorLinkTriggers  = [],
         subNavShowing       = [],
         styleSheet          = document.styleSheets[0],
@@ -136,11 +135,10 @@ window.onload = function () {
     }
 
     for (index = 0; index < amountOfTopNavItems; index++) {
-        heightOfSubNav[index] = subNavContainers[index].clientHeight;
         styleSheet.insertRule(
             '[data-top-nav-item]:nth-child(' +
                 (index + 1) + ') > ul.reveal-sub-nav { height: ' +
-                heightOfSubNav[index] + 'px; }',
+                subNavContainers[index].clientHeight + 'px; }',
             amountOfCSSRules++
         );
 

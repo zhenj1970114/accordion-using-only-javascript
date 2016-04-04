@@ -4,14 +4,23 @@
    <meta charset="utf-8">
    <title>JavaScript and CSS Accordion</title>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="css/style.css">
+   <style>
+      /**
+       * Using the <link> element to include style.css was causing problems in
+       * certain browsers when inserting a rule (using insertRule) at the tail end
+       * of the included style sheet (using amountOfCSSRules in the insertRule
+       * method). Importing style.css safely inserts the calculated rule without
+       * incident in any major browser.
+       */
+      @import url('css/style.css');
+   </style>
 </head>
 <body>
    <nav>
       <ul>
-         <li data-sub-nav-heading>
-            <a href="#">First Navigation</a>
-            <ul>
+         <li data-top-nav-item><!-- The JS array var topNavItem -->
+            <a href="#">First Navigation</a><!-- The JS array var anchorLinkTriggers -->
+            <ul><!-- The JS array var subNavContainers -->
                <li>First Nav, Item 1</li>
                <li>First Nav, Item 2</li>
                <li>First Nav, Item 3</li>
@@ -23,7 +32,7 @@
                <li>First Nav, Item 9</li>
             </ul>
          </li>
-         <li data-sub-nav-heading>
+         <li data-top-nav-item>
             <a href="#">Second Navigation</a>
             <ul>
                <li>Second Nav, Item 1</li>
@@ -34,7 +43,7 @@
                <li>Second Nav, Item 6</li>
             </ul>
          </li>
-         <li data-sub-nav-heading>
+         <li data-top-nav-item>
             <a href="#">Third Navigation</a>
             <ul>
                <li>Third Nav, Item 1</li>
@@ -43,7 +52,7 @@
                <li>Third Nav, Item 4</li>
             </ul>
          </li>
-         <li data-sub-nav-heading>
+         <li data-top-nav-item>
             <a href="#">Fourth Navigation</a>
             <ul>
                <li>Fourth Nav, Item 1</li>
@@ -52,7 +61,7 @@
                <li>Fourth Nav, Item 4</li>
             </ul>
          </li>
-         <li data-sub-nav-heading>
+         <li data-top-nav-item>
             <a href="#">Fifth Navigation</a>
             <ul>
                <li>Fifth Nav, Item 1</li>

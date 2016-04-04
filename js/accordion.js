@@ -135,6 +135,12 @@ window.onload = function () {
     }
 
     for (index = 0; index < amountOfTopNavItems; index++) {
+        //
+        // Create a CSS rule for each of the <li data-top-nav-item> elements,
+        // binding the index variable to the nth-child pseudo-class and explicitly
+        // setting each <li data-top-nav-item>’s height. Append each new rule to the
+        // end of the style sheet.
+        //
         styleSheet.insertRule(
             '[data-top-nav-item]:nth-child(' +
                 (index + 1) + ') > ul.reveal-sub-nav { height: ' +
@@ -149,6 +155,12 @@ window.onload = function () {
         );
     }
 
+    //
+    // Finally, once the height of each <li data-top-nav-item> has been written to
+    // the style sheet, set the height of all the <li data-top-nav-item> elements
+    // to 0 so each can be transitioned. (Recall that the default height value of
+    // “auto” cannot be transitioned. Thus the need to set these heights to 0.)
+    //
     styleSheet.insertRule('[data-top-nav-item] > ul { height: 0; }',
         amountOfCSSRules // Note: The postfix increment operator from the for
                          //       loop above has already incremented this value
